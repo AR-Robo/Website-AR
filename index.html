@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Massively with AR.js</title>
+    <title>AR Model Viewer</title>
 
-    <!-- Include AR.js -->
+    <!-- ✅ AR.js Library for Augmented Reality -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/jeromeetienne/AR.js/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
 
     <style>
         body { margin: 0; overflow: hidden; }
@@ -16,47 +16,21 @@
 </head>
 <body>
 
-    <header id="header">
-        <a href="index.html" class="logo">Massively</a>
+    <!-- ✅ AR.js Scene -->
+    <a-scene embedded arjs>
+        <!-- ✅ Marker that will trigger the 3D model -->
+        <a-marker preset="hiro">
+            <!-- ✅ 3D Model (.glb file) -->
+            <a-entity 
+                gltf-model="./assets/my-model.glb"  <!-- 🔹 Updated: Path to your 3D model -->
+                position="0 0 0" 
+                scale="1 1 1">
+            </a-entity>
+        </a-marker>
 
-        <!-- Contact Form in Header -->
-        <section id="contact-form">
-            <form method="post" action="#">
-                <div class="fields">
-                    <div class="field">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" id="name" />
-                    </div>
-                    <div class="field">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" id="email" />
-                    </div>
-                    <div class="field">
-                        <label for="message">Message</label>
-                        <textarea name="message" id="message" rows="3"></textarea>
-                    </div>
-                </div>
-                <ul class="actions">
-                    <li><input type="submit" value="Send Message" /></li>
-                </ul>
-            </form>
-        </section>
-    </header>
+        <!-- ✅ Static Camera to View AR Scene -->
+        <a-camera-static></a-camera-static>
+    </a-scene>
 
-    <main>
-        <div id="intro">
-            <h1>This is<br />Massively</h1>
-            <p>A free, fully responsive HTML5 + CSS3 site template...</p>
-            <ul class="actions">
-                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-            </ul>
-        </div>
-
-        <!-- AR.js Scene -->
-        <div id="ar-container">
-            <a-scene embedded arjs>
-                <!-- Marker-based AR -->
-                <a-marker preset="hiro">
-                    <a-box position="0 0.5 0" material="color: red;"></a-box>
-                </a-marker>
-                <a-entity camera></a-entity>
+</body>
+</html>
