@@ -3,34 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR Model Viewer</title>
-
-    <!-- ✅ AR.js Library for Augmented Reality -->
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
-
+    <title>AR Experience</title>
     <style>
         body { margin: 0; overflow: hidden; }
         #ar-container { position: relative; width: 100%; height: 100vh; }
     </style>
 </head>
 <body>
+    <!-- Import A-Frame and AR.js -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
 
-    <!-- ✅ AR.js Scene -->
+    <!-- AR Scene -->
     <a-scene embedded arjs>
-        <!-- ✅ Marker that will trigger the 3D model -->
+        <!-- Preload Image in Assets -->
+        <a-assets>
+            <img **id="myImage" src="./assets/myImage.jpg"**>  <!-- ✅ **Underlined Change #1: Added Image Asset** -->
+        </a-assets>
+
+        <!-- Marker to detect AR -->
         <a-marker preset="hiro">
-            <!-- ✅ 3D Model (.glb file) -->
-            <a-entity 
-                gltf-model="Website-AR/assets/myImage.glb"  <!-- 🔹 Updated: Path to your 3D model -->
-                position="0 0 0" 
-                scale="1 1 1">
-            </a-entity>
+            <!-- Display the Image in AR -->
+            <a-image **src="#myImage"** position="0 0.5 0" **width="2" height="2"**></a-image> 
         </a-marker>
 
-        <!-- ✅ Static Camera to View AR Scene -->
-        <a-camera-static></a-camera-static>
+        <!-- AR Camera -->
+        <a-entity camera></a-entity>
     </a-scene>
-
 </body>
 </html>
