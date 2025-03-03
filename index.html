@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AR Model Viewer</title>
-
+    
     <!-- A-Frame Library for WebXR -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-
-    <!-- Updated AR.js Library -->
-    <script src="https://cdn.jsdelivr.net/gh/jeromeetienne/AR.js@1.7.2/aframe/build/aframe-ar.min.js"></script>
+    
+    <!-- AR.js for Augmented Reality -->
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
 
     <style>
         body { margin: 0; overflow: hidden; }
@@ -19,16 +19,16 @@
 <body>
     <!-- Main AR Scene -->
     <a-scene embedded arjs>
-
-        <!-- AR Marker -->
+        
+        <!-- AR Camera -->
         <a-marker preset="hiro">
             <!-- 3D Model (GLB) -->
             <a-entity 
-                gltf-model="./assets/MAKOImage.glb" 
+                gltf-model="./assets/my-model.glb" 
                 position="0 0 0" 
                 scale="0.5 0.5 0.5"
-                rotation="90 0 0"
-            ></a-entity>
+                animation-mixer>
+            </a-entity>
         </a-marker>
 
         <!-- AR Environment -->
